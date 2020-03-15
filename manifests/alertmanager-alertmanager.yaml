@@ -9,7 +9,11 @@ spec:
   baseImage: quay.io/prometheus/alertmanager
   nodeSelector:
     kubernetes.io/os: linux
-  replicas: 3
+    node-role.kubernetes.io/master: ""
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
+  replicas: 1
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true

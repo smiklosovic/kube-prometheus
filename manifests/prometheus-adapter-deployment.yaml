@@ -41,6 +41,10 @@ spec:
           readOnly: false
       nodeSelector:
         kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
       serviceAccountName: prometheus-adapter
       volumes:
       - emptyDir: {}

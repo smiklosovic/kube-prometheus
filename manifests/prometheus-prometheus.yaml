@@ -14,9 +14,13 @@ spec:
   baseImage: quay.io/prometheus/prometheus
   nodeSelector:
     kubernetes.io/os: linux
+    node-role.kubernetes.io/master: ""
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
-  replicas: 2
+  replicas: 1
   resources:
     requests:
       memory: 400Mi

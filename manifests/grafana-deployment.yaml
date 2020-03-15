@@ -116,6 +116,10 @@ spec:
           readOnly: false
       nodeSelector:
         beta.kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
